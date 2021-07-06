@@ -2,7 +2,7 @@
 
 In this project we apply some EDA and K-means Clustring Algorithm  on Wuzzuf Jobs Dataset : https://www.kaggle.com/omarhanyy/wuzzuf-jobs
 
-=========================================================================================
+==============================================================
 Analysis : 
 (api/analysis/summary) -----> to get the summary 
 
@@ -21,7 +21,7 @@ Analysis :
 (api/analysis/kmeans) -----> to apply k-means for company and job titles 
 
 
-=========================================================================================
+==============================================================
 Visualization :
 (api/charts/mostCompanies)-----> to display most demanding companies pie chart
 
