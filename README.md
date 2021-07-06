@@ -3,7 +3,9 @@
 In this project we apply some EDA and K-means Clustring Algorithm  on Wuzzuf Jobs Dataset : https://www.kaggle.com/omarhanyy/wuzzuf-jobs
 Using :
 Java Spark(for Data analysis)
+
 XChart for (Data Visualization)
+
 Spring boot(for web services)
 
 =======================================================================
