@@ -8,7 +8,7 @@ import org.apache.spark.sql.*;
 public class WuzzufDAO {
     public Dataset<Row> readData(String path){
         Logger.getLogger ("org").setLevel (Level.ERROR);
-        final SparkSession sparkSession= SparkSession.builder().appName("new Words Count App").master("local[3]")
+        final SparkSession sparkSession= SparkSession.builder().appName("Wuzzuf").master("local[3]")
                 .getOrCreate();
         DataFrameReader reader =sparkSession.read();
         reader.option ("header", "true");
