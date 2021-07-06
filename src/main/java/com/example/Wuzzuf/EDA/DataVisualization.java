@@ -20,7 +20,7 @@ public class DataVisualization {
          chart.addSeries( mapEntry.getKey(),mapEntry.getValue());
          counter++;
      }
-     new SwingWrapper<PieChart>(chart).displayChart();
+//     new SwingWrapper<PieChart>(chart).displayChart();
      try {
          String path="D:\\iti\\5 Java & UML_Amr Elshafey\\project\\Wuzzuf\\src\\main\\resources\\charts\\";
          BitmapEncoder.saveBitmap(chart,path+chartTitle, BitmapEncoder.BitmapFormat.JPG);
@@ -37,7 +37,7 @@ public class DataVisualization {
      List<String> names = columnValuesCount.stream().map(Map.Entry::getKey).limit(10).collect(Collectors.toList());
      List<Integer> count = columnValuesCount.stream().map(Map.Entry::getValue).limit(10).collect(Collectors.toList());
      chart.addSeries(colName,names,count);
-     new SwingWrapper<CategoryChart>(chart).displayChart();
+//     new SwingWrapper<CategoryChart>(chart).displayChart();
      try {
          String path="D:\\iti\\5 Java & UML_Amr Elshafey\\project\\Wuzzuf\\src\\main\\resources\\charts\\";
          BitmapEncoder.saveBitmap(chart,path+chartTitle, BitmapEncoder.BitmapFormat.JPG);

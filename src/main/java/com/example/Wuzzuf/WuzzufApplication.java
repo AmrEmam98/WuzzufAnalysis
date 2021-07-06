@@ -25,19 +25,10 @@ public class WuzzufApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WuzzufApplication.class, args);
 	}
-	@GetMapping(path = "api/summary")
-	List<Map.Entry<String,Integer>> getSummary(){
-		String path="src/main/resources/data/Wuzzuf_Jobs.csv";
-		DataPreProcessor dataPreProcessor=new DataPreProcessor();
-		Dataset<WuzzufModel> wuzzufData=dataPreProcessor.prepareData(path);
-		wuzzufData.printSchema();
-		DataAnalysis analysis=new DataAnalysis(wuzzufData);
-		return  analysis.getMostPopularAreas();
-	}
-	@GetMapping(path = "api/charts")
-	ResponseEntity<byte[]> getImage(){
 
-		String path="charts/Most popular jobs.jpg";
+	@GetMapping
+	ResponseEntity<byte[]> getImage(){
+		String path="charts/readme.jpg";
 		ClassPathResource imgFile = new ClassPathResource(path);
 		byte[] bytes = new byte[0];
 		try {

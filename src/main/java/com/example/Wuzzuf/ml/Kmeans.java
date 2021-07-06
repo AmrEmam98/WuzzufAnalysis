@@ -9,6 +9,8 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Kmeans {
     Dataset<Row> df;
@@ -21,15 +23,17 @@ public class Kmeans {
         return indexer.fit(rowDataset).transform(rowDataset);
     }
 
-    public void applyKmeans(){
+    public Map<String, String> applyKmeans(){
         Dataset<Row> trainningData=prepareData();
-        Dataset<Row>[] splits = trainningData.randomSplit(new double[] { 0.8, 0.2 },42);
-        Dataset<Row> trainingFeaturesData = splits[0];
-        Dataset<Row> testFeaturesData = splits[1];
         KMeans kMeans= new KMeans().setFeaturesCol("Features").setK(5);
         KMeansModel model = kMeans.fit(trainningData);
-        System.out.println(Arrays.toString(model.clusterCenters()));
-//        model.transform()
+        double wsse = model.computeCost(trainningData);
+         String cluster=Arrays.toString(model.clusterCenters());
+
+        Map<String,String> out=new HashMap<>();
+        out.put("Sum Of square Error", Double.toString(wsse));
+        out.put("Cluster Centers",cluster);
+        return out;
 
     }
 
@@ -42,4 +46,11 @@ public class Kmeans {
         vectorAssembler.setOutputCol("Features");
         return vectorAssembler.transform(factorizedTitle);
     }
+
+    public Dataset<Row> factorizeYearsExp(){
+
+        return factorize(this.df,"YearsExp","YearsExpEncoded");
+    }
+
+
 }

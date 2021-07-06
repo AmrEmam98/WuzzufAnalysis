@@ -1,5 +1,6 @@
 package com.example.Wuzzuf.EDA;
 
+import com.example.Wuzzuf.Constants;
 import com.example.Wuzzuf.models.WuzzufModel;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.spark.sql.Dataset;
@@ -36,19 +37,19 @@ public class DataAnalysis {
 
     public List<Map.Entry<String ,Integer>> getJobsPerCompany() {
         List<Map.Entry<String ,Integer>> columnValuesCount = getColumnValuesCount("Company");
-        dataVisualization.pieChart(columnValuesCount,"Most demanding Companies");
+        dataVisualization.pieChart(columnValuesCount, Constants.MOST_POPULAR_COMPANIES);
         return columnValuesCount;
     }
 
     public List<Map.Entry<String ,Integer>> getMostPopularJobs(){
         List<Map.Entry<String ,Integer>>columnValuesCount = getColumnValuesCount("Title");
-        dataVisualization.categoryChart(columnValuesCount,"Most popular jobs","jobs");
+        dataVisualization.categoryChart(columnValuesCount,Constants.MOST_POPULAR_JOBS,"jobs");
         return columnValuesCount;
 
     }
       public List<Map.Entry<String ,Integer>> getMostPopularAreas(){
           List<Map.Entry<String ,Integer>> columnValuesCount = getColumnValuesCount("Location");
-          dataVisualization.categoryChart(columnValuesCount,"Most popular Areas","Areas");
+          dataVisualization.categoryChart(columnValuesCount,Constants.MOST_POPULAR_AREAS,"Areas");
           return columnValuesCount;
 
     }
@@ -64,8 +65,8 @@ public class DataAnalysis {
     }
 
 
-    private List<Map.Entry<String ,Integer>> concatTwoLists(List<String> colValues, List<Integer> count) {
-        List<Map.Entry<String ,Integer>> outList = new ArrayList<>();
+    public <T>List<Map.Entry<String ,T>> concatTwoLists(List<String> colValues, List<T> count) {
+        List<Map.Entry<String ,T>> outList = new ArrayList<>();
         for (int i = 0; i < colValues.size(); i++) {
             outList.add(new Entry(colValues.get(i), count.get(i)));
         }
